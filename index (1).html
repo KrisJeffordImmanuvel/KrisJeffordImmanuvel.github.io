@@ -1,0 +1,308 @@
+<title>Kris Jefford Immanuvel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    /* palette grounded in the matplotlib tab10 cycle a DS student sees daily */
+    --paper: #FAFAF7;
+    --panel: #FFFFFF;
+    --panel-2: #F1F0EA;
+    --ink: #15171F;
+    --muted: #5A6172;
+    --faint: #8A90A0;
+    --line: #E4E2DA;
+    --blue: #2A6FDB;   /* tab-blue, curated */
+    --blue-soft: #E6EEFB;
+    --orange: #E8833A; /* tab-orange, curated */
+    --orange-soft: #FBEDDF;
+    --shadow: 0 1px 2px rgba(21,23,31,.05), 0 12px 30px rgba(21,23,31,.06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #101219;
+      --panel: #171A23;
+      --panel-2: #1E222D;
+      --ink: #ECEDF2;
+      --muted: #A2A9B8;
+      --faint: #6C7385;
+      --line: #262B37;
+      --blue: #6B9BEF;
+      --blue-soft: #1B2740;
+      --orange: #F0A264;
+      --orange-soft: #33261A;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 16px 40px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101219;
+    --panel: #171A23;
+    --panel-2: #1E222D;
+    --ink: #ECEDF2;
+    --muted: #A2A9B8;
+    --faint: #6C7385;
+    --line: #262B37;
+    --blue: #6B9BEF;
+    --blue-soft: #1B2740;
+    --orange: #F0A264;
+    --orange-soft: #33261A;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 16px 40px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  /* ---- top bar ---- */
+  header.bar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { font-family: "IBM Plex Mono", monospace; font-size: 14px; letter-spacing: .02em; color: var(--ink); font-weight: 500; }
+  .brand .dot { color: var(--orange); }
+  nav.links { display: flex; gap: 22px; align-items: center; }
+  nav.links a { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  nav.links a:hover { color: var(--ink); text-decoration: none; }
+  .theme-btn {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    background: var(--panel-2); color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .theme-btn:hover { color: var(--ink); }
+  @media (max-width: 640px) { nav.links a.nav-hide { display: none; } }
+
+  /* ---- section scaffolding: jupyter cell markers ---- */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+  .cell {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px; color: var(--faint);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+  }
+  .cell .in { color: var(--blue); }
+  .cell .tag { color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .cell::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 500; text-wrap: balance; line-height: 1.1; }
+
+  /* ---- hero ---- */
+  .hero { padding-top: 78px; padding-bottom: 66px; }
+  .hero .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--orange);
+    letter-spacing: .04em; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(44px, 8vw, 82px); letter-spacing: -.01em; margin: 0 0 24px; }
+  .hero h1 em { font-style: italic; color: var(--blue); }
+  .hero .lede { font-size: clamp(18px, 2.4vw, 21px); color: var(--muted); max-width: 60ch; margin: 0 0 30px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 8px; margin-bottom: 34px; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+    background: var(--panel-2); border: 1px solid var(--line); color: var(--muted);
+    padding: 6px 12px; border-radius: 8px; white-space: nowrap;
+  }
+  .chip b { color: var(--ink); font-weight: 500; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: "IBM Plex Mono", monospace; font-size: 14px;
+    padding: 11px 18px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+  }
+  .btn.primary { background: var(--blue); color: #fff; }
+  .btn.primary:hover { text-decoration: none; filter: brightness(1.05); }
+  :root[data-theme="dark"] .btn.primary, :root:not([data-theme="light"]) .btn.primary { color: #0d1017; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn.primary { color: #fff; } }
+  .btn.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn.ghost:hover { border-color: var(--muted); text-decoration: none; }
+
+  /* ---- about ---- */
+  .prose p { max-width: 65ch; color: var(--ink); margin: 0 0 18px; }
+  .prose p.sub { color: var(--muted); }
+
+  /* ---- focus areas ---- */
+  .focus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .focus {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 16px 15px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .focus .k { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--faint); }
+  .focus .v { font-family: "Fraunces", serif; font-size: 18px; color: var(--ink); line-height: 1.2; }
+  .focus .n { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--blue); }
+
+  /* ---- projects ---- */
+  .projects { display: flex; flex-direction: column; gap: 16px; }
+  .proj {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 54px 1fr; gap: 20px; align-items: start;
+  }
+  .proj .idx {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500;
+    width: 54px; height: 54px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--blue-soft); color: var(--blue);
+  }
+  .proj:nth-child(even) .idx { background: var(--orange-soft); color: var(--orange); }
+  .proj h3 { font-size: 24px; margin: 2px 0 8px; }
+  .proj p { margin: 0 0 14px; color: var(--muted); max-width: 62ch; }
+  .proj .stack { display: flex; flex-wrap: wrap; gap: 7px; }
+  .proj .stack span {
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px;
+  }
+  @media (max-width: 520px) {
+    .proj { grid-template-columns: 1fr; gap: 14px; }
+    .proj .idx { width: 44px; height: 44px; }
+  }
+
+  /* ---- contact ---- */
+  .contact-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+    padding: 34px; box-shadow: var(--shadow);
+  }
+  .contact-card h2 { font-size: 30px; margin: 0 0 10px; }
+  .contact-card p { color: var(--muted); max-width: 54ch; margin: 0 0 24px; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+  footer .mono { font-size: 12.5px; color: var(--faint); }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand">kris_jefford<span class="dot">.</span>ai</span>
+    <nav class="links">
+      <a href="#about" class="nav-hide">about</a>
+      <a href="#focus" class="nav-hide">focus</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme">theme</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="hero" aria-label="Introduction">
+      <div class="eyebrow">// b.tech · artificial intelligence &amp; data science</div>
+      <h1>Kris Jefford Immanuvel &mdash; building an intuition for <em>intelligent systems</em>.</h1>
+      <p class="lede">First-year B.Tech. Artificial Intelligence &amp; Data Science student at Karunya Institute of Technology. Learning how machines reason, where they fail, and how to build them responsibly &mdash; one project at a time.</p>
+      <div class="hero-meta">
+        <span class="chip"><b>Karunya</b> Institute of Technology</span>
+        <span class="chip">B.Tech · <b>Artificial Intelligence &amp; Data Science</b></span>
+        <span class="chip">Year <b>1</b> · 2026</span>
+        <span class="chip">Focus: <b>ML · Deep Learning · AI Ethics</b></span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">View projects &darr;</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <section id="about" aria-label="About">
+      <div class="cell"><span class="in">In [1]:</span><span class="tag">about</span></div>
+      <div class="prose">
+        <p>I&rsquo;m at the start of a four-year journey into artificial intelligence, and I treat the beginning as the best time to build good habits: read the fundamentals carefully, question every assumption, and turn ideas into things that actually run.</p>
+        <p class="sub">I&rsquo;m most curious about the space where deep learning meets responsibility &mdash; not just whether a model works, but whether it should, who it affects, and what it quietly gets wrong. Alongside the theory, I keep a habit of shipping small projects, because building is how the concepts finally click.</p>
+      </div>
+    </section>
+
+    <section id="focus" aria-label="Focus areas">
+      <div class="cell"><span class="in">In [2]:</span><span class="tag">focus_areas</span></div>
+      <div class="focus-grid">
+        <div class="focus"><span class="k">domain</span><span class="v">Machine Learning</span><span class="n">core</span></div>
+        <div class="focus"><span class="k">domain</span><span class="v">Deep Learning</span><span class="n">core</span></div>
+        <div class="focus"><span class="k">domain</span><span class="v">Artificial Neural Networks</span><span class="n">core</span></div>
+        <div class="focus"><span class="k">domain</span><span class="v">Generative AI</span><span class="n">exploring</span></div>
+        <div class="focus"><span class="k">domain</span><span class="v">Artificial Intelligence</span><span class="n">foundations</span></div>
+        <div class="focus"><span class="k">principle</span><span class="v">AI Ethics</span><span class="n">values</span></div>
+        <div class="focus"><span class="k">principle</span><span class="v">Critical Thinking</span><span class="n">values</span></div>
+      </div>
+    </section>
+
+    <section id="projects" aria-label="Projects">
+      <div class="cell"><span class="in">In [3]:</span><span class="tag">projects</span></div>
+      <div class="projects">
+
+        <article class="proj">
+          <div class="idx">01</div>
+          <div>
+            <h3>Bible &amp; Quiz App</h3>
+            <p>A bilingual app in both <b>Tamil and English</b> that pairs distraction-free scripture reading with an interactive quiz mode &mdash; making daily reading effortless while letting you test what you&rsquo;ve learned, with scored questions and instant feedback.</p>
+            <div class="stack"><span>App</span><span>Tamil + English</span><span>Quiz logic</span><span>UI/UX</span><span>Personal project</span></div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="idx">02</div>
+          <div>
+            <h3>The Last Warrior</h3>
+            <p>A game project where I explored core mechanics &mdash; movement, combat, and progression &mdash; and the loop of designing, testing, and iterating until it actually feels good to play.</p>
+            <div class="stack"><span>Game</span><span>Mechanics</span><span>Design loop</span><span>Personal project</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact">
+      <div class="cell"><span class="in">In [4]:</span><span class="tag">contact</span></div>
+      <div class="contact-card">
+        <h2>Let&rsquo;s connect</h2>
+        <p>Open to collaborations, learning opportunities, and conversations about AI, data science, and building thoughtful software. The fastest way to reach me is below.</p>
+        <div class="contact-row">
+          <a class="btn primary" href="mailto:krisj4rd@gmail.com">Email me</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/kris-jefford-immanuvel-premkumar-37671240a" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">&copy; 2026 Kris Jefford Immanuvel</span>
+    <span class="mono">designed &amp; built &mdash; iterating in public</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    function current() {
+      if (root.getAttribute('data-theme')) return root.getAttribute('data-theme');
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+    });
+  })();
+</script>
